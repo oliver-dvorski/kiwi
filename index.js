@@ -48,7 +48,7 @@ app.post('/url', slowDown({
   delayMs: 500,
 }), rateLimit({
   windowMs: 30 * 1000,
-  max: 1,
+  max: 5,
 }), async (req, res, next) => {
   let { slug, url } = req.body;
   try {
@@ -56,7 +56,7 @@ app.post('/url', slowDown({
       slug,
       url,
     });
-    if (url.includes('cdg.sh')) {
+    if (url.includes('oli.kiwi')) {
       throw new Error('Stop it. 🛑');
     }
     if (!slug) {
